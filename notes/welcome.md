@@ -7,7 +7,7 @@ This is your local-first Git-backed Markdown knowledge base.
 Edit this note, click **Save & Commit**, and inspect the Git history.
 
 
-HELLO HELLO 
+### HELLO HELLO 
 
 
 HELLO HELLO
