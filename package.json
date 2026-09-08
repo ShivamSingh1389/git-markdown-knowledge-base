@@ -1,0 +1,14 @@
+{
+  "name": "git-markdown-knowledge-base",
+  "version": "1.0.0",
+  "description": "Git-backed Markdown Knowledge Base",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
