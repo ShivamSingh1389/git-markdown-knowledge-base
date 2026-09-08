@@ -1,0 +1,1113 @@
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+
+/* =========================================================
+   DARK THEME VARIABLES
+   ========================================================= */
+
+.app-shell.dark {
+  --bg-primary: #0b1020;
+  --bg-secondary: #111827;
+  --bg-card: #172033;
+  --bg-input: #0f172a;
+
+  --text-primary: #edf2f7;
+  --text-secondary: #94a3b8;
+
+  --border-color: #263247;
+
+  --button-bg: #1e293b;
+  --button-hover: #334155;
+
+  --accent: #60a5fa;
+  --accent-soft: rgba(96, 165, 250, 0.12);
+}
+
+
+/* =========================================================
+   LIGHT THEME VARIABLES
+   ========================================================= */
+
+.app-shell.light {
+  --bg-primary: #f5f7fb;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-input: #f8fafc;
+
+  --text-primary: #111827;
+  --text-secondary: #64748b;
+
+  --border-color: #d1d5db;
+
+  --button-bg: #f1f5f9;
+  --button-hover: #e2e8f0;
+
+  --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.10);
+}
+
+
+/* =========================================================
+   APP SHELL
+   ========================================================= */
+
+.app-shell {
+  display: flex;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background: var(--bg-primary);
+  color: var(--text-primary);
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  width: 270px;
+  min-width: 270px;
+
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 22px 16px;
+
+  background: var(--bg-secondary);
+
+  border-right: 1px solid var(--border-color);
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 24px;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: var(--accent);
+
+  color: white;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 20px rgba(37, 99, 235, 0.20);
+}
+
+.brand div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.brand strong {
+  font-size: 18px;
+  letter-spacing: -0.4px;
+}
+
+.brand span {
+  font-size: 12px;
+
+  color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   NEW NOTE BUTTON
+   ========================================================= */
+
+.new-btn {
+  width: 100%;
+
+  padding: 11px 14px;
+
+  margin-bottom: 12px;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 9px;
+
+  background: var(--button-bg);
+  color: var(--text-primary);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.new-btn:hover {
+  background: var(--button-hover);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.search {
+  width: 100%;
+
+  padding: 10px 12px;
+
+  margin-bottom: 24px;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background: var(--bg-input);
+
+  color: var(--text-primary);
+
+  font-size: 13px;
+}
+
+.search::placeholder {
+  color: var(--text-secondary);
+}
+
+.search:focus {
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 3px var(--accent-soft);
+}
+
+
+/* =========================================================
+   SECTION LABEL
+   ========================================================= */
+
+.section-label {
+  margin-bottom: 10px;
+
+  color: var(--text-secondary);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   NOTES CONTAINER
+   ========================================================= */
+
+.notes {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  overflow-y: auto;
+}
+
+
+/* =========================================================
+   NOTE ITEM
+   ========================================================= */
+
+.note-item {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 10px 11px;
+
+  border: 1px solid transparent;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.note-item:hover {
+  background: var(--button-bg);
+
+  color: var(--text-primary);
+}
+
+.note-item.active {
+  background: var(--accent-soft);
+
+  border-color: var(--accent);
+
+  color: var(--text-primary);
+}
+
+.note-item span {
+  opacity: 0.8;
+}
+
+
+/* =========================================================
+   EMPTY MESSAGE
+   ========================================================= */
+
+.empty {
+  padding: 12px 8px;
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+   ========================================================= */
+
+.sidebar-bottom {
+  margin-top: auto;
+
+  padding-top: 20px;
+}
+
+.sidebar-bottom > button {
+  width: 100%;
+
+  padding: 10px 12px;
+
+  margin-bottom: 14px;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 8px;
+
+  background: var(--button-bg);
+
+  color: var(--text-primary);
+
+  cursor: pointer;
+
+  font-size: 13px;
+
+  text-align: left;
+}
+
+.sidebar-bottom > button:hover {
+  background: var(--button-hover);
+}
+
+
+/* =========================================================
+   GIT STATUS
+   ========================================================= */
+
+.status {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--text-secondary);
+
+  font-size: 11px;
+}
+
+.status i {
+  width: 7px;
+  height: 7px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow:
+    0 0 8px rgba(34, 197, 94, 0.6);
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.main {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--bg-primary);
+
+  color: var(--text-primary);
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+  height: 64px;
+
+  min-height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 24px;
+
+  background: var(--bg-secondary);
+
+  border-bottom: 1px solid var(--border-color);
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
+.crumb {
+  color: var(--text-secondary);
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.4px;
+
+  text-transform: uppercase;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+   ========================================================= */
+
+.actions {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 10px;
+
+  background: var(--button-bg);
+
+  color: var(--text-primary);
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--button-hover);
+
+  transform: scale(1.05);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+
+/* =========================================================
+   DELETE BUTTON
+   ========================================================= */
+
+.delete-btn {
+  padding: 9px 14px;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 8px;
+
+  background: var(--button-bg);
+
+  color: var(--text-primary);
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: var(--button-hover);
+}
+
+
+/* =========================================================
+   WORKSPACE
+   ========================================================= */
+
+.workspace {
+  flex: 1;
+
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 1px;
+
+  background: var(--border-color);
+}
+
+
+/* =========================================================
+   EDITOR
+   ========================================================= */
+
+.editor {
+  min-width: 0;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 28px;
+
+  background: var(--bg-primary);
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.title {
+  width: 100%;
+
+  margin-bottom: 18px;
+
+  padding: 0;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: var(--text-primary);
+
+  font-size: 28px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.7px;
+}
+
+.title::placeholder {
+  color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   MARKDOWN TEXTAREA
+   ========================================================= */
+
+.editor textarea {
+  flex: 1;
+
+  width: 100%;
+
+  min-height: 300px;
+
+  resize: none;
+
+  padding: 18px;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 12px;
+
+  outline: none;
+
+  background: var(--bg-input);
+
+  color: var(--text-primary);
+
+  font-family:
+    "Cascadia Code",
+    "Fira Code",
+    Consolas,
+    monospace;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.2s ease;
+}
+
+.editor textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+.editor textarea:focus {
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 3px var(--accent-soft);
+}
+
+
+/* =========================================================
+   SAVE STATUS
+   ========================================================= */
+
+.hint {
+  min-height: 22px;
+
+  margin-top: 10px;
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+}
+
+.hint.saving {
+  color: var(--accent);
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   PREVIEW
+   ========================================================= */
+
+.preview {
+  min-width: 0;
+  min-height: 0;
+
+  overflow-y: auto;
+
+  padding: 28px;
+
+  background: var(--bg-secondary);
+
+  color: var(--text-primary);
+}
+
+
+/* =========================================================
+   PREVIEW LABEL
+   ========================================================= */
+
+.preview-label {
+  margin-bottom: 24px;
+
+  color: var(--text-secondary);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   MARKDOWN ARTICLE
+   ========================================================= */
+
+.preview article {
+  max-width: 850px;
+
+  margin: 0 auto;
+
+  line-height: 1.7;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   MARKDOWN HEADINGS
+   ========================================================= */
+
+.preview article h1,
+.preview article h2,
+.preview article h3,
+.preview article h4 {
+  color: var(--text-primary);
+
+  line-height: 1.25;
+
+  margin-top: 1.5em;
+  margin-bottom: 0.6em;
+}
+
+.preview article h1 {
+  font-size: 32px;
+}
+
+.preview article h2 {
+  font-size: 25px;
+}
+
+.preview article h3 {
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   MARKDOWN PARAGRAPHS
+   ========================================================= */
+
+.preview article p {
+  color: var(--text-primary);
+
+  margin: 12px 0;
+}
+
+
+/* =========================================================
+   MARKDOWN LINKS
+   ========================================================= */
+
+.preview article a {
+  color: var(--accent);
+
+  text-decoration: none;
+}
+
+.preview article a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   MARKDOWN CODE
+   ========================================================= */
+
+.preview article code {
+  padding: 3px 6px;
+
+  border-radius: 5px;
+
+  background: var(--bg-input);
+
+  color: var(--accent);
+
+  font-family:
+    "Cascadia Code",
+    "Fira Code",
+    Consolas,
+    monospace;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   MARKDOWN CODE BLOCK
+   ========================================================= */
+
+.preview article pre {
+  overflow-x: auto;
+
+  padding: 16px;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 10px;
+
+  background: var(--bg-input);
+}
+
+.preview article pre code {
+  padding: 0;
+
+  background: transparent;
+
+  color: var(--text-primary);
+}
+
+
+/* =========================================================
+   MARKDOWN BLOCKQUOTE
+   ========================================================= */
+
+.preview article blockquote {
+  margin: 18px 0;
+
+  padding: 10px 16px;
+
+  border-left: 4px solid var(--accent);
+
+  background: var(--accent-soft);
+
+  color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   MARKDOWN LIST
+   ========================================================= */
+
+.preview article ul,
+.preview article ol {
+  padding-left: 25px;
+}
+
+
+/* =========================================================
+   MARKDOWN HORIZONTAL LINE
+   ========================================================= */
+
+.preview article hr {
+  border: none;
+
+  border-top: 1px solid var(--border-color);
+
+  margin: 28px 0;
+}
+
+
+/* =========================================================
+   MODAL BACKDROP
+   ========================================================= */
+
+.modal-backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.65);
+
+  backdrop-filter: blur(5px);
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal {
+  width: min(700px, 100%);
+
+  max-height: 80vh;
+
+  overflow-y: auto;
+
+  padding: 22px;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 14px;
+
+  background: var(--bg-secondary);
+
+  color: var(--text-primary);
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   MODAL HEADER
+   ========================================================= */
+
+.modal-head {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.modal-head h2 {
+  margin: 0;
+
+  font-size: 20px;
+}
+
+.modal-head button {
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 8px;
+
+  background: var(--button-bg);
+
+  color: var(--text-primary);
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+.modal-head button:hover {
+  background: var(--button-hover);
+}
+
+
+/* =========================================================
+   GIT COMMIT
+   ========================================================= */
+
+.commit {
+  display: flex;
+
+  gap: 14px;
+
+  padding: 14px 0;
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+.commit code {
+  color: var(--accent);
+
+  font-family:
+    "Cascadia Code",
+    "Fira Code",
+    Consolas,
+    monospace;
+
+  font-size: 12px;
+}
+
+.commit div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.commit strong {
+  font-size: 13px;
+}
+
+.commit span {
+  color: var(--text-secondary);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.sidebar ::-webkit-scrollbar,
+.preview::-webkit-scrollbar,
+.modal::-webkit-scrollbar,
+.notes::-webkit-scrollbar {
+  width: 7px;
+}
+
+.sidebar ::-webkit-scrollbar-thumb,
+.preview::-webkit-scrollbar-thumb,
+.modal::-webkit-scrollbar-thumb,
+.notes::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .sidebar {
+    width: 220px;
+    min-width: 220px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .preview {
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .app-shell {
+    display: block;
+
+    overflow-y: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+
+    height: auto;
+
+    border-right: none;
+
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .main {
+    height: auto;
+
+    min-height: 600px;
+  }
+
+  header {
+    padding: 0 16px;
+  }
+
+  .editor {
+    padding: 20px;
+  }
+
+}
